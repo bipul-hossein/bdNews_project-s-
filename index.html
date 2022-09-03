@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +9,44 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body>
+    <header>
+        <!-- header  -->
+        <div class="navbar bg-base-100">
+            <div class="flex-1">
+                <a class="btn btn-ghost normal-case text-xl">Bd News</a>
+            </div>
+            <div class="flex-none">
+                <ul class="menu menu-horizontal p-0">
+                    <li><a>News</a></li>
+                    <li><a>Blogs</a></li>
+                    <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                        <div class="w-10 rounded-full">
+                            <img src="https://placeimg.com/80/80/people" />
+                        </div>
+                    </label>
+                </ul>
+            </div>
+        </div>
+        <!-- cetagorice -->
+        <nav>
+            <ul id="nave_section" class="menu menu-horizontal bg-base-100 rounded-box p-2 rounded-box">
+                <li><a >Home</a></li>
+            </ul>
+        </nav>
+        
+    </header>
+    <!-- all news -->
+    <main>
+         <span id="card_container">
+            <div id="card-items" class="grow grid grid-cols-2 gap-4">            
+            </div>
+            <!-- no result found -->
+            <section id="not-found" class=" flex w-full h-96 text-center mx-auto"></section>
+        </span>
+
     <script src="js/index.js"></script>
 </body>
+
 </html>
