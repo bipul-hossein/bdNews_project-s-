@@ -15,7 +15,7 @@ const displayApiForNav = async () => {
     data.forEach(singleData => {
         const categoryId = singleData
         const li = document.createElement("li");
-        li.innerHTML = `<a id="${singleData.category_id}" class="text-2xl mx-2" onclick="addToPlayer(this)"> ${singleData.category_name}</a>
+        li.innerHTML = `<a id="${singleData.category_id}" class="text-2xl mx-2 " onclick="addToCetagory(this) "> ${singleData.category_name}</a>
           `
         divSelect.appendChild(li)
 
@@ -24,7 +24,7 @@ const displayApiForNav = async () => {
 
 displayApiForNav()
 
-function addToPlayer(element) {
+function addToCetagory(element) {
     const newsId = element.parentNode.children[0].id;
     loadData(newsId)
     const cetagoryName = element.parentNode.children[0].innerText//select cetagory name
@@ -89,7 +89,16 @@ modelFieldSelect.textContent=""
   
 }
    
-
+/* sppiner */
+const toggleSpinner = isLoading => {
+    const loaderSection = document.getElementById('spinner');
+    if(isLoading){
+        loaderSection.classList.remove('hidden')
+    }
+    else{
+        loaderSection.classList.add('d-none');
+    }
+}
 
 
 
@@ -103,7 +112,7 @@ const displayLoadData = async (data) => {
     const selectItems = parseFloat(selectItemsFeild)
     selectItemsFeild.innerText = data.length
 
-
+   
 
     const cardContainer = document.getElementById("card-items");
     cardContainer.textContent = ""
@@ -120,24 +129,15 @@ const displayLoadData = async (data) => {
                 <div class="card-body">
                     <h2 class="card-title">${title ? title : title}</h2>
                     <p>${details.length > 20 ? details.slice(0, 150) + ".." : details}</p>
-                  
-                    <div class="card-actions justify-between">
-
-                    
-                    <div class="card-actions justify-between">
-                   
+                    <div class="card-actions justify-between">                   
+                    <div class="card-actions justify-between">              
                         <img class="w-10 rounded-full" src="${author.img}" />
-
                         <div>
                             <p> ${author.name}</p>
                             <p> ${author.published_date}</p>
                         </div>
                     </div>
-
-                    <p class="text-center "><i class="fa-regular fa-eye"></i>  ${total_view} K</p>
-                   
-
-                    
+                    <p class="text-center "><i class="fa-regular fa-eye"></i>  ${total_view} K</p>            
                     <label for="my-modal-3">
                     <a id="${data._id}" " class="btn modal-button text-2xl mx-2" onclick="selectedCard(this)"> <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
@@ -146,9 +146,10 @@ const displayLoadData = async (data) => {
                  `
         cardContainer.appendChild(containerDiv)
     })
-
+//toggleSpinner(false);
 }
-/* showModal('${details}','${image_url}','${title}') */
+
+
 const showModal = (details, image_url, title) => {
     console.log(details, image_url, title)
     const modalBody = document.getElementById("modal-body");
