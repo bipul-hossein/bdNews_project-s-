@@ -13,8 +13,7 @@ const displayApiForNav = async () => {
     data.forEach(singleData => {
         const categoryId = singleData
         const li = document.createElement("li");
-        li.innerHTML = `<a id="click_btn" onclick="addToPlayer(this)"> ${singleData.category_name}
-            <p class='d-none text-black'> ${singleData.category_id}</p></a>
+        li.innerHTML = `<a id="${singleData.category_id}" class="text-2xl mx-2" onclick="addToPlayer(this)"> ${singleData.category_name}</a>
           `
         divSelect.appendChild(li)
 
@@ -23,20 +22,14 @@ const displayApiForNav = async () => {
 
 displayApiForNav()
 
-
-
 function addToPlayer(element) {
-
-    const newsId = element.parentNode.children[0].children[0].innerText;
-
-
+    const newsId = element.parentNode.children[0].id;
     loadData(newsId)
-
 }
 
-const loadData = async (id) => {
+const loadData = async (id = 08) => {
     //console.log(id)
-    id.textContent=""
+    id.textContent = ""
     fetch(`https://openapi.programming-hero.com/api/news/category/${id} `)
         .then(response => response.json())
         .then(data => displayLoadData(data.data))
@@ -44,19 +37,13 @@ const loadData = async (id) => {
 }
 loadData()
 
-
 const displayLoadData = async (data) => {
-
-
     const cardContainer = document.getElementById("card-items");
-    cardContainer.textContent =""
-
-for(const infor of data){
-        console.log(infor)
+    cardContainer.textContent = ""
+    data.forEach(data => {
+       
         //console.log(data)
-     
-
-        const { details, image_url, title } = infor;
+        const { details, image_url, title } = data;
 
         const containerDiv = document.createElement('div')
         containerDiv.innerHTML = `
@@ -74,8 +61,7 @@ for(const infor of data){
             </div> 
                  `
         cardContainer.appendChild(containerDiv)
-
-    }
+    })
 
 }
 
