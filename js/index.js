@@ -3,7 +3,7 @@ const loadApi = async () => {
     const response = await fetch(`https://openapi.programming-hero.com/api/news/categories`);
     const data = await response.json();
     return data.data.news_category;
-  const error = console.log(error)
+    const error = console.log(error)
 }
 
 const displayApiForNav = async () => {
@@ -52,74 +52,60 @@ const loadNews = async (news_id) => {
         .then(response => response.json())
         .then(data => newInfo(data.data))
         .catch(error => console.log(error));
-   // console.log(data.data)
+    // console.log(data.data)
 }
 loadNews()
 
-const newInfo = async (info) =>{
- const data =  info[0]
-  
-//console.log(data)
+const newInfo = async (info) => {
+    const data = info[0]
 
-  const modelFieldSelect =document.getElementById("modal-body");
-  modelFieldSelect.textContent=""
-  const divCreat = document.createElement("div");
-  divCreat.innerHTML = `<h3 class="text-2xl">${data.title}</h3>
+    const modelFieldSelect = document.getElementById("modal-body");
+    modelFieldSelect.textContent = ""
+    const divCreat = document.createElement("div");
+    divCreat.innerHTML = `<h3 class="text-2xl">${data.title}</h3>
   <img class="" src="${data.image_url}" />
   <p class="text-xl mx-2">${data.details}</p>
   <p class="mx-2 flex justify-end">Author: ${data.author.name}</p>
     `
     modelFieldSelect.appendChild(divCreat)
-  
 }
-   
+
 /* sppiner */
 const toggleSpinner = isLoading => {
     const loaderSection = document.getElementById('spinner');
-    if(isLoading){
+    if (isLoading) {
         loaderSection.classList.remove('hidden')
     }
-    else{
+    else {
         loaderSection.classList.add('d-none');
     }
 }
 
-
-
-
-const selectItemsFeild = document.getElementById('items-number')
-const selectItemsString = selectItemsFeild.innerText;
-const selectItems = parseFloat(selectItemsFeild)
-
-
-const notFound = document.getElementById('not-found')
-if(selectItems == 0){
-notFound.classList.add('hidden')
-    
-}
-else{
-    notFound.classList.remove('hidden');
-}
 const displayLoadData = async (data) => {
-//  const last = await newInfo()
-//  console.log(last)
-    //items no. assign
     const selectItemsFeild = document.getElementById('items-number')
     const selectItemsString = selectItemsFeild.innerText;
     const selectItems = parseFloat(selectItemsFeild)
     selectItemsFeild.innerText = data.length
- 
+    const selectItem = data.length
+    selectItem.innerText = ""
+
     const cardContainer = document.getElementById("card-items");
     cardContainer.textContent = ""
 
-
-
+    //no data found
+  const notFound = document.getElementById('not-found')
+    if (selectItem === 0) {
+        notFound.classList.remove('hidden')
+    }
+    else {
+        notFound.classList.add('hidden');
+    } 
     data.forEach(data => {
+       // console.log(selectItem)
 
-      console.log(data)
         const { details, image_url, title, author, total_view } = data;
-      //  console.log(data._id)
-      
+        //  console.log(data._id)
+
         const containerDiv = document.createElement('div')
         containerDiv.innerHTML = `
                 <div class="card card-side bg-base-100 shadow-xl">
@@ -144,7 +130,7 @@ const displayLoadData = async (data) => {
                  `
         cardContainer.appendChild(containerDiv)
     })
-toggleSpinner(false);
+    toggleSpinner(false);
 }
 
 const showModal = (details, image_url, title) => {
