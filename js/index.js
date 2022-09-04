@@ -2,11 +2,9 @@
 const loadApi = async () => {
     const response = await fetch(`https://openapi.programming-hero.com/api/news/categories`);
     const data = await response.json();
-    //console.log(data)
     return data.data.news_category;
-
+  const error = console.log(error)
 }
-
 
 const displayApiForNav = async () => {
     const data = await loadApi()
@@ -33,47 +31,32 @@ function addToCetagory(element) {
     const selectCetagory = parseFloat(selectCetagoryString);
     selectCetagoryFeild.innerText = cetagoryName
 
-
 }
 function selectedCard(info) {
     const newsI = info.id;
-
-    //console.log(newsI)
     loadNews(newsI)
-
 }
-
 const loadData = async (category_id = '01') => {
     //console.log(id)
     category_id.textContent = ""
     fetch(`https://openapi.programming-hero.com/api/news/category/${category_id} `)
         .then(response => response.json())
         .then(data => displayLoadData(data.data))
+        .catch(error => console.log(error));
     //  console.log(data.data)
 }
 
-
-
-
 loadData()
-
-
-
-
-
-
 const loadNews = async (news_id) => {
-    //console.log(id)
-    //category_id.textContent = ""
     fetch(`https://openapi.programming-hero.com/api/news/${news_id}`)
         .then(response => response.json())
         .then(data => newInfo(data.data))
+        .catch(error => console.log(error));
    // console.log(data.data)
 }
 loadNews()
 
 const newInfo = async (info) =>{
-
  const data =  info[0]
   
 //console.log(data)
@@ -81,9 +64,10 @@ const newInfo = async (info) =>{
   const modelFieldSelect =document.getElementById("modal-body");
 modelFieldSelect.textContent=""
   const divCreat = document.createElement("div");
-  divCreat.innerHTML = `<h3>${data.title}</h3>
+  divCreat.innerHTML = `<h3 class="text-2xl">${data.title}</h3>
   <img class="" src="${data.image_url}" />
-  <p class="text-2xl mx-2">${data.details}</p>
+  <p class="text-xl mx-2">${data.details}</p>
+  <p class="mx-2 flex justify-end">Author: ${data.author.name}</p>
     `
     modelFieldSelect.appendChild(divCreat)
   
@@ -100,9 +84,6 @@ const toggleSpinner = isLoading => {
     }
 }
 
-
-
-
 const displayLoadData = async (data) => {
 //  const last = await newInfo()
 //  console.log(last)
@@ -111,9 +92,6 @@ const displayLoadData = async (data) => {
     const selectItemsString = selectItemsFeild.innerText;
     const selectItems = parseFloat(selectItemsFeild)
     selectItemsFeild.innerText = data.length
-
-   
-
     const cardContainer = document.getElementById("card-items");
     cardContainer.textContent = ""
     data.forEach(data => {
@@ -149,7 +127,6 @@ const displayLoadData = async (data) => {
 //toggleSpinner(false);
 }
 
-
 const showModal = (details, image_url, title) => {
     console.log(details, image_url, title)
     const modalBody = document.getElementById("modal-body");
@@ -160,5 +137,3 @@ const showModal = (details, image_url, title) => {
     <p class="py-4">${details}</p>
     `
 }
-
-

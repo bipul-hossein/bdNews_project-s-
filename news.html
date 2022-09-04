@@ -23,14 +23,14 @@
 <body>
     <header class="mx-3">
         <!-- header  -->
-        <div class="navbar bg-base-100">
-            <div class="flex-1">
-                <a class="pb-3 text-4xl "><span class="text-6xl bg-blue-600 rounded-lg text-white">Bd</span> News</a>
+        <div class="navbar bg-base-100 justify-between">
+            <div class="flex ">
+                <a class="pb-2 text-3xl "><span class="text-4xl bg-blue-600 rounded-lg text-white">Bd</span> News</a>
             </div>
             <div class="flex-none">
                 <ul class="menu menu-horizontal p-0 ">
-                    <li><a id="active" href="news.html" class="text-2xl">News</a></li>
-                    <li><a href="blogs.html" class="text-2xl mx-4">Blogs</a></li>
+                    <li><a id="active" href="news.html" class="text-xl">News</a></li>
+                    <li><a href="blogs.html" class="text-xl mx-2">Blogs</a></li>
                     <label tabindex="0" class="btn btn-ghost btn-circle avatar">
                         <div class="w-10 rounded-full">
                             <img src="https://placeimg.com/80/80/people" />
@@ -55,7 +55,7 @@
     <!-- all news -->
     <main class="mx-3">
         <span id="card_container">
-            <div id="card-items" class="grow grid grid-cols-2 gap-4">
+            <div id="card-items" class="grow grid sm:grid-cols-1 w-full gap-4 md:grid-cols-2">
             </div>
             <!-- no result found -->
             <section id="not-found" class=" flex w-full h-96 text-center mx-auto"></section>
