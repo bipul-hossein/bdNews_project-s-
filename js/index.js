@@ -13,7 +13,7 @@ const displayApiForNav = async () => {
     data.forEach(singleData => {
         const categoryId = singleData
         const li = document.createElement("li");
-        li.innerHTML = `<a id="${singleData.category_id}" class="text-2xl mx-2 " onclick="addToCetagory(this) "> ${singleData.category_name}</a>
+        li.innerHTML = `<a id="${singleData.category_id}" class="text-2xl mx-2" onclick="addToCetagory(this) "> ${singleData.category_name}</a>
           `
         divSelect.appendChild(li)
 
@@ -62,7 +62,7 @@ const newInfo = async (info) =>{
 //console.log(data)
 
   const modelFieldSelect =document.getElementById("modal-body");
-modelFieldSelect.textContent=""
+  modelFieldSelect.textContent=""
   const divCreat = document.createElement("div");
   divCreat.innerHTML = `<h3 class="text-2xl">${data.title}</h3>
   <img class="" src="${data.image_url}" />
@@ -84,6 +84,22 @@ const toggleSpinner = isLoading => {
     }
 }
 
+
+
+
+const selectItemsFeild = document.getElementById('items-number')
+const selectItemsString = selectItemsFeild.innerText;
+const selectItems = parseFloat(selectItemsFeild)
+
+
+const notFound = document.getElementById('not-found')
+if(selectItems == 0){
+notFound.classList.add('hidden')
+    
+}
+else{
+    notFound.classList.remove('hidden');
+}
 const displayLoadData = async (data) => {
 //  const last = await newInfo()
 //  console.log(last)
@@ -92,8 +108,12 @@ const displayLoadData = async (data) => {
     const selectItemsString = selectItemsFeild.innerText;
     const selectItems = parseFloat(selectItemsFeild)
     selectItemsFeild.innerText = data.length
+ 
     const cardContainer = document.getElementById("card-items");
     cardContainer.textContent = ""
+
+
+
     data.forEach(data => {
 
       console.log(data)
@@ -124,7 +144,7 @@ const displayLoadData = async (data) => {
                  `
         cardContainer.appendChild(containerDiv)
     })
-//toggleSpinner(false);
+toggleSpinner(false);
 }
 
 const showModal = (details, image_url, title) => {
