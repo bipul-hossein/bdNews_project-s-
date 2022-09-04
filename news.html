@@ -11,10 +11,17 @@
 
     <!-- font awesome -->
     <script src="https://kit.fontawesome.com/afaf28017e.js" crossorigin="anonymous"></script>
+
+    <style>
+
+        #active{background: blue;
+       color: black;
+   }
+    </style>
 </head>
 
 <body>
-    <header>
+    <header class="mx-3">
         <!-- header  -->
         <div class="navbar bg-base-100">
             <div class="flex-1">
@@ -22,8 +29,8 @@
             </div>
             <div class="flex-none">
                 <ul class="menu menu-horizontal p-0 ">
-                    <li><a class="text-2xl">News</a></li>
-                    <li><a class="text-2xl mx-4">Blogs</a></li>
+                    <li><a id="active" href="news.html" class="text-2xl">News</a></li>
+                    <li><a href="blogs.html" class="text-2xl mx-4">Blogs</a></li>
                     <label tabindex="0" class="btn btn-ghost btn-circle avatar">
                         <div class="w-10 rounded-full">
                             <img src="https://placeimg.com/80/80/people" />
@@ -46,7 +53,7 @@
     <section id="not-found"></section>
     </header>
     <!-- all news -->
-    <main>
+    <main class="mx-3">
         <span id="card_container">
             <div id="card-items" class="grow grid grid-cols-2 gap-4">
             </div>

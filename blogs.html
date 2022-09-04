@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/afaf28017e.js" crossorigin="anonymous"></script>
+
+    <style>
+        #active {
+            background: blue;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="mx-3">
+        <!-- header  -->
+        <div class="navbar bg-base-100">
+            <div class="flex-1">
+                <a class="pb-3 text-4xl "><span class="text-6xl bg-blue-600 rounded-lg text-white">Bd</span> News</a>
+            </div>
+            <div class="flex-none">
+                <ul class="menu menu-horizontal p-0 ">
+                    <li><a href="news.html" class="text-2xl">News</a></li>
+                    <li><a id="active" href="blogs.html" class="text-2xl mx-4">Blogs</a></li>
+                    <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                        <div class="w-10 rounded-full">
+                            <img src="https://placeimg.com/80/80/people" />
+                        </div>
+                    </label>
+                </ul>
+            </div>
+        </div>
+        <main>
+
+            <span class="mx-6">
+                <h3 class="text-3xl">1. What is the main defferent var, let and const ?</h3><br>
+                <p class="text-xl">In JavaScript, users can declare a variable using 3 keywords that are var, let, and
+                    const. In this article, we will see the differences between the var, let, and const keywords. We
+                    will discuss the scope and other required concepts about each keyword.<br>
+
+                    var keyword in JavaScript: The var is the oldest keyword to declare a variable in JavaScript.
+
+                    Scope: Global scoped or function scoped. The scope of the var keyword is the global or function
+                    scope. It means variables defined outside the function can be accessed globally, and variables
+                    defined inside a particular function can be accessed within the function.<br>
+
+                    Example 1: Variable ‘a’ is declared globally. So, the scope of the variable ‘a’ is global, and it
+                    can be accessible everywhere in the program. The output shown is in the console..</p>
+            </span>
+            <span>
+                <h3 class="text-3xl">2. Differences Between Arrow and Regular Functions</h3><br>
+                <p class="text-xl">This article discusses the major differences between the regular functions and the
+                    arrow functions.<br>
+
+                    Arrow functions – a new feature introduced in ES6 – enable writing concise functions in JavaScript.
+                    While both regular and arrow functions work in a similar manner, yet there are certain interesting
+                    differences between them, as discussed below.<br>
+
+                    Regular functions created using function declarations or expressions are ‘constructible’ and
+                    ‘callable’. Since regular functions are constructible, they can be called using the ‘new’ keyword.
+                    However, the arrow functions are only ‘callable’ and not constructible. Thus, we will get a run-time
+                    error on trying to construct a non-constructible arrow functions using the new keyword.</p>
+            </span>
+            <span>
+                <h3 class="text-3xl">3. .forEach(), .map(), .filter(), .find()... What's the difference?</h3><br>
+                <p class="text-xl">.forEach(), is used to execute the same code on every element in an array but does
+                    not change the array and it returns undefined.<br>
+                    .map() executes the same code on every element in an array and returns a new array with the updated
+                    elements.<br>
+
+                    .filter() checks every element in an array to see if it meets a certain criteria and returns a new
+                    array with the elements that return truthy for the criteria.<br>
+                    .find() checks every element in an array to see if it meets a certain criteria and did not returns
+                    new array.
+                </p>
+            </span>
+
+        </main>
+
+        <script src="js/index.js"></script>
+</body>
+
+</html>
